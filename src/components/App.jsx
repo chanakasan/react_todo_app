@@ -1,6 +1,13 @@
 import * as Icon from "./Icon"
 import { saveState } from "./../store"
 
+const styles = {
+  removeBtn: {
+    color: 'red',
+    cursor: 'pointer',
+  }
+}
+
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -27,6 +34,11 @@ export default class App extends React.Component {
     this.setState({ list, newTodoName: '' })
   }
 
+  _removeTodo(todo) {
+    const list = _.filter(this.state.list, (item) => (item.name !== todo.name))
+    this.setState({ list })
+  }
+
   _handleTextInputChange(event) {
     this.setState({ newTodoName: event.target.value })
   }
@@ -44,7 +56,11 @@ export default class App extends React.Component {
         <br/>
 
         <div className="list">
-          {_.map(this.state.list, (item) => (<div key={item.name}><Icon.starO/> {item.name}</div>))}
+          {_.map(this.state.list, (item) => (
+          <div key={item.name} className="todo-item">
+            <Icon.starO/> {item.name} &nbsp;&nbsp;<span style={styles.removeBtn} className="remove-btn" onClick={() => this._removeTodo(item)}>x</span>
+          </div>
+          ))}
         </div>
       </div>
       )

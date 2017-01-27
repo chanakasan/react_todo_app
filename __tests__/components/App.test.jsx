@@ -19,3 +19,14 @@ it('Can add new todo', () => {
 
   expect(app.text()).toContain('test 2')
 })
+
+it('Can remove todo', () => {
+  const list = [{name: 'test 1'}]
+  const app = shallow(<App list={list} />)
+
+  expect(app.text()).toContain('test 1')
+
+  app.find('.todo-item').first().find('.remove-btn').first().simulate('click')
+
+  expect(app.text()).not.toContain('test 1')
+})
