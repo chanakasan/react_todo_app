@@ -5,11 +5,10 @@ const initialState = {
   list: [
     {
       name: 'feed birds'
-  },
-  {
-    name: 'buy cloths'
-  }
-
+    },
+    {
+      name: 'buy cloths'
+    }
   ],
 }
 const persistedState = loadState()
