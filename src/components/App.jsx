@@ -1,3 +1,5 @@
+import * as Icon from "./Icon"
+
 export default class App extends React.Component {
   render() {
     return (
@@ -6,7 +8,7 @@ export default class App extends React.Component {
         <hr/>
 
         <div className="list">
-          {_.map(this.props.list, (item) => (<div key={item.name}>{item.name}</div>))}
+          {_.map(this.props.list, (item) => (<div key={item.name}><Icon.starO/> {item.name}</div>))}
         </div>
       </div>
     )
