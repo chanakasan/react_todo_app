@@ -2,10 +2,13 @@ import * as Icon from "./Icon"
 import { saveState } from "./../store"
 
 const styles = {
+  title: {
+    marginBottom: '40px',
+  },
   removeBtn: {
     color: 'red',
     cursor: 'pointer',
-  }
+  },
 }
 
 export default class App extends React.Component {
@@ -46,8 +49,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="my-app">
-        <h1>Todo App</h1>
-        <hr/>
+        <h1 style={styles.title}>Todo</h1>
 
         <div className="new-item">
           <input type="text" value={this.state.newTodoName} onChange={this._handleTextInputChange} />
