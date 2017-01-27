@@ -28,11 +28,12 @@ export default class App extends React.Component {
   }
 
   _addTodo() {
-    if (this.state.newTodoName === '') return
-
     const newTodo = {
-      name: this.state.newTodoName
+      name: _.trim(this.state.newTodoName)
     }
+
+    if (newTodo.name === '' || _.some(this.state.list, newTodo)) return
+
     const list = this.state.list.concat([newTodo])
     this.setState({ list, newTodoName: '' })
   }
