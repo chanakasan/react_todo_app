@@ -17,6 +17,7 @@ export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state)
     window.localStorage.setItem('app_state', serializedState)
+    console.log("[LOG]", 'persisted app state')
   } catch (error) {
     console.log("[DEBUG] error =", error)
   }

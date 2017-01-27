@@ -1,4 +1,5 @@
 import * as Icon from "./Icon"
+import { saveState } from "./../store"
 
 export default class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ export default class App extends React.Component {
       newTodoName: '',
     }
     this._handleTextInputChange = this._handleTextInputChange.bind(this)
+  }
+
+  componentDidUpdate() {
+    saveState({
+      list: this.state.list,
+    })
   }
 
   _addTodo() {
